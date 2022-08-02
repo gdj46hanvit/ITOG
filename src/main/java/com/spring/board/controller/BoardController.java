@@ -83,20 +83,19 @@ public class BoardController {
 	// 작성 엑션
 	@RequestMapping(value = "/board/boardWriteAction.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String boardWriteAction(Locale locale, Model model, BoardVo boardVo) throws Exception{
+	public String boardWriteAction(Locale locale, BoardVo boardVo) throws Exception{
 		
 		HashMap<String, String> result = new HashMap<String, String>();
 		CommonUtil commonUtil = new CommonUtil();
 		
 		int resultCnt = boardService.boardInsert(boardVo);
-		List<BoardVo> boardList = new ArrayList<BoardVo>();
 		
 		result.put("success", (resultCnt > 0)?"Y":"N");
 		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);
 		
 		System.out.println("callbackMsg::"+callbackMsg);
-		model.addAttribute("boardList", boardList);
-			
+		resultCnt=boardService.boardInsert(boardVo);
+		
 		return callbackMsg;
 	}
 	

@@ -49,7 +49,14 @@ public class boardServiceImpl implements boardService{
 	@Override
 	public int boardInsert(BoardVo boardVo) throws Exception {
 		// TODO Auto-generated method stub
+		int[] results= new int[boardVo.getBoardVoList().size()];
+		int result=1;
 		
+		for(int i=0; i<boardVo.getBoardVoList().size();i++) {
+			results[i]=boardDao.boardInsert(boardVo.getBoardVoList().get(i));
+
+			result *= results[i];
+		}
 		return boardDao.boardInsert(boardVo);
 	}
 

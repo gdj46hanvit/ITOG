@@ -26,7 +26,7 @@
 		      	,ROW_NUMBER() OVER(ORDER BY BOARD_NUM DESC) AS NUMROW
 		      	,COUNT(*) OVER() AS TOTAL_CNT
 			FROM
-				BOARD	
+				BOARD
 		)
 		WHERE NUMROW BETWEEN (#{pageNo}-1)*10 + 1 AND (#{pageNo})*10
     </select>
@@ -50,7 +50,7 @@
     	AND 	BOARD_NUM  = #{boardNum}
     </select>	
     
-    <update id="boardInsert" parameterType="com.spring.board.vo.BoardVo">
+    <insert id="boardInsert" parameterType="java.util.Map">
         INSERT INTO 
         BOARD
         (BOARD_TYPE
@@ -63,20 +63,18 @@
         ,MODIFIED_TIME
         )
         VALUES
-         <foreach collection="list" item="item" separator=" , " >
         ('1'
        ,(SELECT NVL(TO_NUMBER(MAX(BOARD_NUM)+1),0)
 	    FROM BOARD
 	    WHERE BOARD_TYPE = '1')
-        ,#{item.boardTitle}
-        ,#{item.boardComment}
+        ,#{boardTitle}
+        ,#{boardComment}
         ,'SYSTEM'
         ,TO_CHAR(SYSDATE)
         ,'SYSTEM'
         ,TO_CHAR(SYSDATE)
         )
-        </foreach>
-    </update>
+    </insert>
     
        <delete id="deleteBoard" parameterType="com.spring.board.vo.PageVo">
     	DELETE FROM BOARD
