@@ -46,7 +46,7 @@ public class BoardController {
 			pageVo.setPageNo(page);;
 		}
 		
-		boardList = boardService.SelectBoardList(pageVo);
+		boardList = boardService.selectBoardList(pageVo);
 		totalCnt = boardService.selectBoardCnt();
 		
 		model.addAttribute("boardList", boardList);
@@ -85,16 +85,18 @@ public class BoardController {
 	@ResponseBody
 	public String boardWriteAction(Locale locale, BoardVo boardVo) throws Exception{
 		
+		
+		
 		HashMap<String, String> result = new HashMap<String, String>();
 		CommonUtil commonUtil = new CommonUtil();
-		
 		int resultCnt = boardService.boardInsert(boardVo);
 		
 		result.put("success", (resultCnt > 0)?"Y":"N");
+		
+		
 		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);
 		
 		System.out.println("callbackMsg::"+callbackMsg);
-		resultCnt=boardService.boardInsert(boardVo);
 		
 		return callbackMsg;
 	}

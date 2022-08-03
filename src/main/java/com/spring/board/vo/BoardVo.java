@@ -18,10 +18,6 @@ public class BoardVo {
 	
 	
 	
-	
-	
-	
-	
 	public List<BoardVo> getBoardVoList() {
 		return boardVoList;
 	}

@@ -8,7 +8,6 @@
 <title>boardWrite</title>
 </head>
 <script type="text/javascript">
-
 	$j(document).ready(function(){
 		
 		$j("#submit").on("click",function(){
@@ -55,9 +54,8 @@
 				'<td width="120" align="center">'+
 				'Title'+
 				'</td>'+
-				'<div id="box">'+
 				'<td width="400">'+
-				'<input type="text" name="boardTitle"  id="search_value" size="50" value="${board.boardTitle}">'+
+				' <input name="boardVoList[1].boardTitle" type="text" size="50" value="${board.boardTitle}"  maxlength="24">'+
 			'	</td>'+
 			'</tr>'+
 			'<tr>'+
@@ -65,16 +63,10 @@
 				'Comment'+
 			'	</td>'+
 			'	<td valign="top">'+
-			'	<textarea name="boardComment" id="search_value"  rows="20" cols="55">${board.boardComment}</textarea>'+
+			'	<textarea name="boardVoList[1].boardComment" value="${board.boardComment}" rows="20" cols="55"></textarea>'+
 			'	</td>'+
 			'</tr>'+
 			'</div>'+
-			'<tr>'+
-				'<td align="center">'+
-				'Writer'+
-				'</td>'+
-			'<td>'+
-				'</td>'+
 			'</tr>'+
 		'</table>'+
 		'<button class="btn btn-default" name="delStaff">삭제</button>'+
@@ -96,7 +88,7 @@
         
     });
 </script>
-<button name="addStaff">테이블 추가</button>
+<button name="addStaff">행 추가</button>
 <form class="boardWrite">
 	<tr>
 	<table align="center" id="box">
@@ -114,7 +106,7 @@
 						</td>
 						<div id="box">
 						<td width="400">
-						<input type="text" name="boardTitle"  id="search_value" size="50" value="${board.boardTitle}">
+						 <input name="boardVoList[0].boardTitle" type="text" size="50" value="${board.boardTitle}"  maxlength="24">
 						</td>
 					</tr>
 					<tr>
@@ -122,7 +114,7 @@
 						Comment
 						</td>
 						<td valign="top">
-						<textarea name="boardComment" id="search_value"  rows="20" cols="55">${board.boardComment}</textarea>
+						<textarea name="boardVoList[0].boardComment" value="${board.boardComment}" rows="20" cols="55"></textarea>
 						</td>
 					</tr>
 					</div>

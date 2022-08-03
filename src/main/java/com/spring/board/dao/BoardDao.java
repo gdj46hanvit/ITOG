@@ -10,6 +10,8 @@ public interface BoardDao {
 	public String selectTest() throws Exception;
 
 	public List<BoardVo> selectBoardList(PageVo pageVo) throws Exception;
+	
+	public List<BoardVo> insertBoardList(BoardVo boardVo) throws Exception;
 
 	public BoardVo selectBoard(BoardVo boardVo) throws Exception;
 
@@ -20,5 +22,7 @@ public interface BoardDao {
 	public int updateBoard(BoardVo boardVo) throws Exception;
 
 	public int deleteBoard(BoardVo boardVo) throws Exception;
+
+	
 
 }

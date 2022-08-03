@@ -60,6 +60,11 @@ public class BoardDaoImpl implements BoardDao{
 		// TODO Auto-generated method stub
 		return sqlSession.delete("board.deleteBoard", boardVo);
 	}
+	@Override
+	public List<BoardVo> insertBoardList(BoardVo boardVo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("board.boardList",boardVo);
+	}
 	
 	
 }

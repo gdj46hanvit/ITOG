@@ -23,7 +23,7 @@ public class boardServiceImpl implements boardService{
 	}
 	
 	@Override
-	public List<BoardVo> SelectBoardList(PageVo pageVo) throws Exception {
+	public List<BoardVo> selectBoardList(PageVo pageVo) throws Exception {
 		// TODO Auto-generated method stub
 		
 		return boardDao.selectBoardList(pageVo);
@@ -54,10 +54,8 @@ public class boardServiceImpl implements boardService{
 		
 		for(int i=0; i<boardVo.getBoardVoList().size();i++) {
 			results[i]=boardDao.boardInsert(boardVo.getBoardVoList().get(i));
-
-			result *= results[i];
 		}
-		return boardDao.boardInsert(boardVo);
+		return result;
 	}
 
 	@Override
@@ -70,6 +68,12 @@ public class boardServiceImpl implements boardService{
 	public int deleteBoard(BoardVo boardVo) throws Exception {
 		// TODO Auto-generated method stub
 		return boardDao.deleteBoard(boardVo);
+	}
+
+	@Override
+	public List<BoardVo> insertBoardList(BoardVo boardVo) throws Exception {
+		// TODO Auto-generated method stub
+		return boardDao.insertBoardList(boardVo);
 	}
 	
 }
