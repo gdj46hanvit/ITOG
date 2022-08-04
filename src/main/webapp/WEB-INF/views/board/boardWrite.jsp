@@ -45,11 +45,24 @@
 <body>
 <script>
     //추가 버튼
+    var count=1;
+        function increase(){
+            count=count+1;
+        }
     $(document).on("click","button[name=addStaff]",function(){
-        
+    	
+            
         var addStaffText =     '<tr name="trStaff">'+
 		'<td>'+
 		'<table id="mytable" border ="1"> '+
+		'<tr>'+
+			'<td width="120" align="center">'+
+			'Type'+
+			'</td>'+
+			'<td width="400">'+
+			' <input name="boardVoList[1].boardType" type="text" size="50" value="${board.boardType}"  maxlength="24">'+
+		'	</td>'+
+		'</tr>'+
 			'<tr>'+
 				'<td width="120" align="center">'+
 				'Title'+
@@ -88,7 +101,7 @@
         
     });
 </script>
-<button name="addStaff">행 추가</button>
+<button name="addStaff" id="increase">행 추가</button>
 <form class="boardWrite">
 	<tr>
 	<table align="center" id="box">
@@ -100,6 +113,15 @@
 		<tr name="trStaff">
 			<td>
 				<table id="mytable" border ="1"> 
+					<tr>
+						<td width="120" align="center">
+						Type
+						</td>
+						<div id="box">
+						<td width="400">
+						 <input name="boardVoList[0].boardType" type="text" size="50" value="${board.boardType}"  maxlength="24">
+						</td>
+					</tr>
 					<tr>
 						<td width="120" align="center">
 						Title
